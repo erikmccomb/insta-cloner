@@ -13,3 +13,18 @@ export const logout = () => {
     localStorage.removeItem(token);
   });
 }
+
+export const tokenCheck = () => {
+ if (localStorage['access-token'])
+   return headers();
+ return null;
+}
+
+export const headers = () => {
+ let user = {}
+ KEYS.forEach( token => {
+   user[token] = localStorage[token];
+ });
+
+ return user;
+}
