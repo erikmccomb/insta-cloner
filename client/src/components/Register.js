@@ -6,7 +6,7 @@ class Register extends React.Component {
   state = { email: '', password: '', password_confirmation: ''}
 
   handleChange = (e) => {
-    const{ name, value } = e.target;
+    const { name, value } = e.target;
     this.setState({ [name]: value })
   }
 
@@ -16,7 +16,7 @@ class Register extends React.Component {
     if ( password.length < 6 )
     errors.push('Password must be more than 6 characters long.')
 
-    if( password != password_confirmation)
+    if( password !== password_confirmation)
       errors.push('Passwords do not match')
 
     return errors.map (( err, i) => <Header key={i} as ="h4" color="red">{err}</Header> )
@@ -29,29 +29,29 @@ class Register extends React.Component {
         {this.checkPasswords() }
         <Header as="h2" textAlign="Center">Register your ne account!</Header>
         <Form>
-          <Form.input 
+          <Form.Input 
             label="Email"
             type="email"
             name="email"
             required
             value={email}
-            onchange={this.handleChange}
+            onChange={this.handleChange}
           />
-          <Form.input
+          <Form.Input
             label="Password"
             type="password"
             name="password"
             required
             value={password}
-            onchange={this.handleChange}
+            onChange={this.handleChange}
           />
-          <Form.input
+          <Form.Input
             label="Password Confirmation"
             type="password"
             name="password_confirmation"
             required
             value={password_confirmation}
-            onchange={this.handleChange}
+            onChange={this.handleChange}
           />
           <Form.Button>Register</Form.Button>
         </Form>
