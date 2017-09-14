@@ -5,7 +5,7 @@ import Register from './components/Register';
 class App extends Component {
   render() {
     return (
-      </Container>
+      <Container>
         <Register />
       </Container>
     );
