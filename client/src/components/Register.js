@@ -1,5 +1,6 @@
 import React from 'react';
 import {Form, Header} from 'semantic-ui-react';
+import axios from 'axios';
 
 // Does it have state? yes. Make a class
 class Register extends React.Component {
@@ -22,13 +23,21 @@ class Register extends React.Component {
     return errors.map (( err, i) => <Header key={i} as ="h4" color="red">{err}</Header> )
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    axios.post('/auth', {email, password } )
+    .then( res =>{ debugger } )
+    .catch( err => console.log(err) )
+  }
+
   render() {
     let { email, password, password_confirmation } = this.state;
     return(
       <div>
         {this.checkPasswords() }
         <Header as="h2" textAlign="Center">Register your ne account!</Header>
-        <Form>
+        <Form onSubmit= {this.handleSubmit}>
           <Form.Input 
             label="Email"
             type="email"
